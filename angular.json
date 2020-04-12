@@ -27,7 +27,12 @@
               "src/styles.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./src/styles"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -58,11 +63,6 @@
                 }
               ]
             }
-          },
-          "stylePreprocessorOptions": {
-            "includePaths": [
-              "./src/styles/variables.scss"
-            ]
           }
         },
         "serve": {
