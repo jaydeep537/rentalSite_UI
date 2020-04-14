@@ -5,7 +5,7 @@ import { Rental } from 'src/app/shared/rental.model';
 @Component({
   selector: 'app-rental-detail',
   templateUrl: './rental-detail.component.html',
-  styleUrls: ['./rental-detail.component.css']
+  styleUrls: ['./rental-detail.component.scss']
 })
 export class RentalDetailComponent implements OnInit {
   rental:Rental;
