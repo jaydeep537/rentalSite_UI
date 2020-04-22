@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, observable } from 'rxjs'
+import { Observable} from 'rxjs'
 import { Rental } from './rental.model'
 import { HttpClient } from '@angular/common/http';
 @Injectable({

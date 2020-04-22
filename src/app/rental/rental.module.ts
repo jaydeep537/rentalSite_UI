@@ -7,7 +7,8 @@ import { RentalDetailComponent } from './rental-detail/rental-detail.component';
 import { RentalRoutingModule } from '../rental-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgPipesModule } from 'ngx-pipes';
-import { UppercasePipe } from '../common/pipes/uppercase.pipe'
+import { UppercasePipe } from '../common/pipes/uppercase.pipe';
+import { MapModule } from  '../common/map/map.module'
 @NgModule({
     declarations:[
         RentalComponent,
@@ -20,7 +21,8 @@ import { UppercasePipe } from '../common/pipes/uppercase.pipe'
         CommonModule,
         RentalRoutingModule,
         HttpClientModule,
-        NgPipesModule
+        NgPipesModule,
+        MapModule
     ]
 })
 export class RentalModule{}

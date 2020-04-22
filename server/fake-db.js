@@ -48,7 +48,7 @@ class FakeDb {
       {
       "title": "Apartment In China Town",
       "city": "San Francisco",
-      "street": "Union Street",
+      "street": "Lombard Street",
       "category": "apartment",
       "image": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
       "bedrooms": 3,
@@ -77,6 +77,17 @@ class FakeDb {
       "shared": true,
       "description": "Building close to Penn Station",
       "dailyRate": 68
+    },
+    {
+      "title": "Hotel with Garden",
+      "city": "Gandhinagar",
+      "street": "Infocity",
+      "category": "house",
+      "image": "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg",
+      "bedrooms": 6,
+      "shared": false,
+      "description": "Very nice house in Long Island with garden",
+      "dailyRate": 189
     }
   ]; 
     }
