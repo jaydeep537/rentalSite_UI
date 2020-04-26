@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const RentalModel = require('../models/rental');
+const userCntrl = require('../controllers/user')
+router.get('/secretRoute',userCntrl.authMiddleware,(req,res)=>{
+    res.json({secret:true})
+})
 router.get('',(req,res)=>{
     RentalModel.find({},(error,foundRentals)=>{
         console.log("Find All");
