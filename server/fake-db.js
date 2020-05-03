@@ -92,10 +92,16 @@ class FakeDb {
     }
   ]; 
   this.users = [{
-      username:"Test User",
-      email:"Test@gmail.com",
+        username:"Test User",
+        email:"Test@gmail.com",
+        password:"Test@1234"
+    },
+    {
+      username:"Test User2",
+      email:"Test2@gmail.com",
       password:"Test@1234"
-  }];
+    }
+  ];
 }
     async cleanDb (){
       await User.deleteMany();  
@@ -103,6 +109,7 @@ class FakeDb {
     }
     pushDataToDb(){
         const user = new User(this.users[0]);
+        const user2 = new User(this.users[1]);
         this.rentals.forEach((rental)=>{
             const newRental = new Rental(rental)
             user.rentals.push(newRental);
@@ -110,6 +117,7 @@ class FakeDb {
             newRental.save();
         })
         user.save();
+        user2.save();
     }
     async seedDb(){
         await this.cleanDb();

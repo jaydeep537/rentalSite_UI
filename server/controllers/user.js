@@ -70,7 +70,7 @@ userModel.findOne({email},(err,existingUser)=>{
 })
 }
 exports.authMiddleware = function(req,res,next){
-        const token = req.headers.autharization;
+        const token = req.headers.authorization;
         if(token){
            const user = parseToken(token);
             userModel.findById(user.userId,function(err,user){
