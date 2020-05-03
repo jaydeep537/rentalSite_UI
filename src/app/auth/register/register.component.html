@@ -1,0 +1,91 @@
+<section id="register">
+    <div class="bwm-form">
+      <div class="row">
+        <div class="col-md-5">
+          <h1 class="page-title">Register</h1>
+          <form  #registerForm="ngForm">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text"
+                     name="username"
+                     class="form-control" [(ngModel)]="formData.username"
+                     id="username"
+                     #username="ngModel"
+                     required
+                     >
+                <div *ngIf="username.invalid && (username.dirty && username.touched)" class="alert alert-danger">
+                  <div *ngIf="username.errors.required">
+                    Username s required
+                  </div>
+                </div>     
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email"
+                     name="email" 
+                     class="form-control"
+                     #email="ngModel"
+                     [(ngModel)]="formData.email"
+                     id="email" 
+                     required 
+                     email>
+                     <div *ngIf="email.invalid && (email.dirty && email.touched)" class="alert alert-danger">
+                      <div *ngIf="email.errors.required">
+                        Username s required
+                      </div>
+                      <div *ngIf="email.errors.email">
+                        Please enter valid email
+                      </div>
+                    </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password"
+                     [(ngModel)]="formData.password" 
+                     name="password"
+                     #password="ngModel"
+                     class="form-control"
+                     id="password"
+                     required
+                     minlength="6"
+                     >
+                     <div *ngIf="password.invalid && (password.dirty && password.touched)" class="alert alert-danger">
+                      <div *ngIf="password.errors.required">
+                        Password is required
+                      </div>
+                      <div *ngIf="password.errors.minlength">
+                        Password shoud be minimum 6 digit
+                      </div>
+                    </div>      
+            </div>
+            <div class="form-group">
+              <label for="passwordConfirmation">Confirm Password</label>
+              <input type="password"
+                     [(ngModel)]="formData.confirmPassword" 
+                     name="confirmPassword"
+                     class="form-control"
+                     #confirmPassword="ngModel"
+                     id="passwordConfirmation"
+                     required
+                     >
+                     <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty && confirmPassword.touched)" class="alert alert-danger">
+                      <div *ngIf="confirmPassword.errors.required">
+                        Confirm Password is required
+                      </div>
+                    </div>     
+            </div>
+            <div *ngFor="let error of errors" class="alert alert-danger">
+                {{error.detail}}
+            </div> 
+            <button [ngClass]="{'isDisabled':registerForm.form.invalid}" [disabled]="registerForm.form.invalid" (click)="register()" type="submit" class="btn btn-bwm">Submit</button>
+          </form>
+        </div>
+        <div class="col-md-6 ml-auto">
+          <div class="image-container">
+            <h2 class="catchphrase">As our member you have access to most awesome places in the world.</h2>
+            <img src="/assets/images/register-image.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
