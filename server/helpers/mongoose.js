@@ -1,10 +1,12 @@
 module.exports = {
     normalizeErrors : function(err) {
-        const normalizeErrors = [];
+        const normalizeErrors={
+            Errors:[]
+        }
         for (const property in err) {
             ///console.log(`${property}: ${err[property]}`);
             if(err.hasOwnProperty(property)){
-                normalizeErrors.push({title:property,detail:err[property].message})
+                normalizeErrors.Errors.push({title:property,detail:err[property].message})
             }
         }
         return normalizeErrors;   
