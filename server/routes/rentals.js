@@ -6,23 +6,40 @@ router.get('/secretRoute',userCntrl.authMiddleware,(req,res)=>{
     res.json({secret:true})
 })
 router.get('',(req,res)=>{
-    RentalModel.find({},(error,foundRentals)=>{
-        console.log("Find All");
+    RentalModel.find({})
+    .select('-bookings')
+    .exec((error,foundRentals)=>{
+        //console.log("Find All");
         res.json(foundRentals);
-    });
+    })
+    // RentalModel.find({},(error,foundRentals)=>{
+    //     console.log("Find All");
+    //     res.json(foundRentals);
+    // });
 });
 
 router.get('/:rentalId',(req,res)=>{
     const rentalId = req.params.rentalId;
-    console.log("Inside Find By ID" ,rentalId);
-    RentalModel.findById(rentalId,(error,foundRentalById)=>{
+    //console.log("Inside Find By ID" ,rentalId);
+    RentalModel.findById(rentalId)
+    .populate('bookings','startAt endAt -_id')
+    .populate('user','username -_id')
+    .exec((error,foundRentalById)=>{
         if(error){
-            res.status(404).send({Errors:[
-                {title:'Rental Error',detail:'Rental not found...!'}
-            ]})
-        }
-        res.json(foundRentalById);
-    });
+                res.status(404).send({Errors:[
+                    {title:'Rental Error',detail:'Rental not found...!'}
+                ]})
+            }
+            res.json(foundRentalById);
+    })
+    // RentalModel.findById(rentalId,(error,foundRentalById)=>{
+    //     if(error){
+    //         res.status(404).send({Errors:[
+    //             {title:'Rental Error',detail:'Rental not found...!'}
+    //         ]})
+    //     }
+    //     res.json(foundRentalById);
+    // });
 });
 
 module.exports = router;
