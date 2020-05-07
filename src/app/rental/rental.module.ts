@@ -10,7 +10,8 @@ import { NgPipesModule } from 'ngx-pipes';
 import { UppercasePipe } from '../common/pipes/uppercase.pipe';
 import { MapModule } from  '../common/map/map.module';
 import { RentalDetailBookingComponent } from './rental-detail/rental-detail-booking/rental-detail-booking.component'
-import { Daterangepicker } from 'ng2-daterangepicker'
+import { Daterangepicker } from 'ng2-daterangepicker';
+import { FormsModule } from '@angular/forms';
 @NgModule({
     declarations:[
         RentalComponent,
@@ -26,7 +27,8 @@ import { Daterangepicker } from 'ng2-daterangepicker'
         HttpClientModule,
         NgPipesModule,
         MapModule,
-        Daterangepicker
+        Daterangepicker,
+        FormsModule
     ]
 })
 export class RentalModule{}

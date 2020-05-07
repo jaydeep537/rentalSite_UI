@@ -46,12 +46,6 @@ html , body , p {
     .form-text {
       font-size: 13px;
     }
-
-    .btn-bwm{
-      background: red;
-      color: white;
-    }
-  
     .catchphrase {
       text-align: center;
       font-size: 42px;
@@ -68,5 +62,23 @@ html , body , p {
   }
   .clickable{
     cursor: pointer;
+  }
+
+  .mystyle{
+    color: white !important;
+    background-color: #d6a3a3 !important;
+    border-radius: 15px !important
+  }
+  .btn-bwm {
+    background-color: $main-color !important;
+    border-color: $main-color !important;
+    color: white !important;
+    padding: 15px 30px;
+    font-size: 20px !important;
+  
+    &:hover, &:focus, &:active {
+      border-color: $main-color !important;
+      background-color: $main-color !important;
+    }
   }
   
