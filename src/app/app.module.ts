@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
 import { RentalModule } from './rental/rental.module';
 import { AuthModule } from './auth/auth.module'
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +17,10 @@ import { AuthModule } from './auth/auth.module'
     BrowserModule,
     AppRoutingModule,
     RentalModule,
-    AuthModule
+    AuthModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
