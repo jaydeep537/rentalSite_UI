@@ -1,5 +1,5 @@
 const userModel = require('../models/user')
-const { normalizeErrors } = require('../helpers/mongoose')
+const { normalizeErrors } = require('../helpers/mongoose');
 const jwt = require('jsonwebtoken');
 const { secretKey } = require('../config/dev');
 exports.auth = (req,res)=>{
