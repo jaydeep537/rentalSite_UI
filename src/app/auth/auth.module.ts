@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from '../shared/token.interceptor';
+import { TokenInterceptor } from './shared/token.interceptor';
 @NgModule({
   declarations: [
     AuthComponent,

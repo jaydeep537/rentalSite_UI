@@ -18,5 +18,8 @@ export class HeaderComponent implements OnInit {
     this.auth.logout();
     this.router.navigate(['/login']);
   }
-
+  searchCity(city:String){
+    city ? this.router.navigate([`/rentals/${city}/home`]) : this.router.navigate([`/rentals`]); 
+    console.log("Search city called",city);
+  }
 }
