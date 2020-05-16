@@ -12,6 +12,8 @@ import { MapModule } from  '../common/map/map.module';
 import { RentalDetailBookingComponent } from './rental-detail/rental-detail-booking/rental-detail-booking.component'
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { FormsModule } from '@angular/forms';
+import { RentalSearchComponent } from './rental-search/rental-search.component';
+import { RentalCreateComponent } from './rental-create/rental-create.component';
 @NgModule({
     declarations:[
         RentalComponent,
@@ -19,7 +21,9 @@ import { FormsModule } from '@angular/forms';
         RentalListItemComponent,
         RentalDetailComponent,
         UppercasePipe,
-        RentalDetailBookingComponent
+        RentalDetailBookingComponent,
+        RentalSearchComponent,
+        RentalCreateComponent
     ],
     imports:[
         CommonModule,

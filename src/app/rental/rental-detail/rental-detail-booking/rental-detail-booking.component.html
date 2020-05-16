@@ -1,7 +1,8 @@
 <div class="booking">
     <h3 class="booking-price">${{rental.dailyRate}} <span class="booking-per-night">per night</span></h3>
     <hr>
-    <label>Dates</label>
+    <ng-container *ngIf="auth.isAuthenticated()">
+      <label>Dates</label>
     
       <input type="text" class="form-control daterangepicker-input" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)"/>
     <div class="form-group">
@@ -18,6 +19,10 @@
     </div>
     <button [ngClass]="{'isDisabledBooking':bookingForm.form.invalid || !newBooking.startAt || !newBooking.endAt}" [disabled]="bookingForm.form.invalid || !newBooking.startAt || !newBooking.endAt" (click)="confirmBooking(content)" class="btn btn-danger btn-confirm btn-block">Reserve place now</button>
     <hr>
+    </ng-container>
+    <ng-container *ngIf="!auth.isAuthenticated()" class="should-login">
+      <a class="btn btn-bwm" routerLink="/login">Please Login to Book this place</a>
+    </ng-container>
     <p #bookingNoteTitle class="booking-note-title">People are interested into this house</p>
     <p class="booking-note-text">
         More than 500 people checked this rental in last month.

@@ -17,6 +17,10 @@
         <div class="col-md-8">
           <div class="rental">
             <h2 class="rental-type {{rental.category}}">{{rental.shared?'Shared':'Whole'}} {{rental.category}}</h2>
+            <div class="rental-owner">
+              <img src="https://api.adorable.io/avatars/285/abott@adorable.png" alt="">
+              <span>{{rental.user.username}}</span>
+            </div>
             <h1 class="rental-title">{{rental.title}}</h1>
             <h2 class="rental-city">{{rental.city | ucwords}}</h2>
             <div class="rental-room-info">
@@ -29,7 +33,7 @@
             </p>
             <hr>
             <div class="rental-assets">
-              <h3 class="title">Assets</h3>
+              <h3 class="page-title">Assets</h3>
               <div class="row">
                 <div class="col-md-6">
                   <span><i class="fa fa-asterisk"></i> Cooling</span>

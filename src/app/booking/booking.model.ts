@@ -1,4 +1,4 @@
-import { Rental } from '../shared/rental.model'
+import { Rental } from '../rental/shared/rental.model'
 export class Booking {
     static readonly BOOKING_FORMAT = 'Y-MM-DD';
     _id:String;

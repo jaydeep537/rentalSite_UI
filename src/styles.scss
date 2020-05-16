@@ -12,7 +12,12 @@ html , body , p {
 .house{
     color:#bf1818;
 }
-@import 'variables';
+
+.page-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}  
 .bwm-form {
     color: $main-text-color;
   

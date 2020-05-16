@@ -1,0 +1,9 @@
+#shared{
+    width: 20px;
+    outline:0;
+    box-shadow:none;
+}
+#sharedLabel{
+    padding: 10px 10px 0px 0px;
+    float: left;
+}
