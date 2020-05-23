@@ -8,6 +8,19 @@ router.get('/secretRoute',userCntrl.authMiddleware,(req,res)=>{
     res.json({secret:true})
 })
 
+
+router.get('/manage',userCntrl.authMiddleware , (req,res)=>{
+    const user = res.locals.user;
+    RentalModel
+    .where({user})
+    .populate('bookings')
+    .exec((err,foundRental)=>{
+        if(err){
+            return res.status(422).send(normalizeErrors(error.errors));
+        }
+        return res.json(foundRental)
+    })
+})
 router.get('/:rentalId',(req,res)=>{
     const rentalId = req.params.rentalId;
     //console.log("Inside Find By ID" ,rentalId);
@@ -23,6 +36,43 @@ router.get('/:rentalId',(req,res)=>{
             res.json(foundRentalById);
     });
 });
+router.delete('/:rentalId', userCntrl.authMiddleware ,(req,res)=>{
+    const rentalId = req.params.rentalId;
+    const user = res.locals.user;
+    RentalModel.findById(rentalId)
+    .populate("user")
+    .populate({
+        path:'bookings',
+        select:'startAt',
+        match:{startAt:{$gt:new Date()}}
+    })
+    .exec((error,foundRentals)=>{
+        if(error){
+            return res.status(422).send(normalizeErrors(error.errors));
+        }
+        if(!foundRentals){
+            return res.status(404).send({Errors:[
+                {title:'Invalid Rental',detail:`No retnal found with id:${rentalId}`}
+            ]})
+        }
+        if(foundRentals.user._id==user.id){
+            return res.status(404).send({Errors:[
+                {title:'Invalid User',detail:'You can delete only your own rantal!'}
+            ]})
+        }
+        if(foundRentals.bookings.length > 0){
+            return res.status(404).send({Errors:[
+                {title:'Active booking found',detail:'You can not delete rental beacause active booking is present!'}
+            ]})
+        }
+        foundRentals.remove((err)=>{
+            if(err){
+                return res.status(422).send(normalizeErrors(err.errors));
+            }
+            return res.json({"Deleted":"Success"});
+        })
+    })
+})
 router.post('', userCntrl.authMiddleware , (req,res)=>{
     const {title,city,street,category,image,bedrooms,shared,description,dailyRate} = req.body;
     const user = res.locals.user;
@@ -34,7 +84,7 @@ router.post('', userCntrl.authMiddleware , (req,res)=>{
         }
         User.update({_id:user.id},{$push:{rentals:createdRental}},()=>{});
         //console.log("Rental Created",err,createdRental)  
-        return res.json(createdRental) 
+        return res.json(createdRental);
     })
 })
 router.get('',(req,res)=>{
