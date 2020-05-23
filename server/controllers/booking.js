@@ -53,3 +53,15 @@ exports.createBooking = (req,res)=>{
         return isValid; 
     }    
 }
+exports.getUserBooking = (req,res)=>{
+    const user = res.locals.user;
+    Booking
+    .where({user})
+    .populate('rental')
+    .exec((err,foundBookings)=>{
+        if(err){
+            return res.status(422).send(normalizeErrors(err.errors));    
+        }
+        return res.json(foundBookings);
+    })
+}
